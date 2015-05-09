@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+	<meta title="Squashage" package="com.moonforge.Squashage" version="0.0.0" company="Moonforge" />
+	<app main="Main" path="Export" file="Squashage" />
+
+	<source path="Source" />
+
+	<haxelib name="openfl" />
+	<haxelib name="actuate" />
+
+	<assets path="Assets" rename="assets" exclude="*.svg" />
+	<icon path="Assets/openfl.svg" />
+
+</project>
