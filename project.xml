@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 
-	<meta title="Squashage" package="com.moonforge.Squashage" version="0.0.0" company="Moonforge" />
-	<app main="Main" path="Export" file="Squashage" />
+	<meta title="Squashage" package="com.moonforge.Squasage" version="0.0.0" company="Moonforge" />
+	<app main="Main" path="Export" file="Squasage" />
 
 	<source path="Source" />
 
