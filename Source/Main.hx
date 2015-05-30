@@ -84,11 +84,11 @@ class Main extends Sprite {
 		graphics.endFill();
 
 		squashy.x = 200;
-		squashy.y = 400;
+		squashy.y = 410;
 		addChild(squashy);
 
 		dancer.x = 600;
-		dancer.y = 400;
+		dancer.y = 410;
 		addChild(dancer);
 
 		lives = livesMax;
@@ -158,9 +158,9 @@ class Main extends Sprite {
 
 	private function score(sq1:Squashy, sq2:Squashy)
 	{
-		if( sq1.j0 == sq2.j0 &&
-			sq1.j1 == sq2.j1 &&
-			sq1.j2 == sq2.j2 ) return 6;
+		if( sq1.j1 == sq2.j1 &&
+			sq1.j2 == sq2.j2 &&
+			sq1.j3 == sq2.j3) return 6;
 		return 0;
 	}
 }

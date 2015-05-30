@@ -14,15 +14,26 @@ class SquashySeg extends Sprite
     public var rightDisplay = new TextField();
 
 
-  public function new( colour:Int )
+  public function new( isHead:Bool )
   {
     super();
 
     name = "seg";
 
-    graphics.beginFill(colour);
-    graphics.drawRect(-20,-20,40,40);
+    graphics.beginFill(0xFFCCCC);
+    graphics.lineStyle(2,0x000000,1,true);
+    graphics.drawCircle(0,0,5);
+    graphics.drawRoundRect(-10,-45,20,40,20,20);
     graphics.endFill();
+
+    if( isHead )
+    {
+      graphics.beginFill(0xFFFFFF);
+      graphics.lineStyle(2,0x000000,1,true);
+      graphics.drawCircle(10,-40,10);
+      graphics.drawCircle(15,-45,2.5);
+      graphics.endFill();
+    }
 
     var format = new TextFormat ("Katamotz Ikasi", 25, 0xCC0026);
     leftDisplay.defaultTextFormat = format;

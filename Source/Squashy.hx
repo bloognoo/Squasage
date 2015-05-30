@@ -11,9 +11,9 @@ class Squashy extends Sprite
 {
     public var seg:SquashySeg;
     private var keys:IntMap<Bool>;
-    public var j0=0;
     public var j1=0;
     public var j2=0;
+    public var j3=0;
 
     public function new( playerController:Bool = false)
     {
@@ -23,24 +23,27 @@ class Squashy extends Sprite
 
         var curSeg = null;
         var nxtSeg = null;
-        var colour = 0x0000ff;
-
+        
         keys = new IntMap<Bool>();
         keys.set(Keyboard.Q,false);
         keys.set(Keyboard.W,false);
         keys.set(Keyboard.E,false);
+        keys.set(Keyboard.R,false);
         keys.set(Keyboard.P,false);
         keys.set(Keyboard.O,false);
         keys.set(Keyboard.I,false);
+        keys.set(Keyboard.U,false);
 
         for( i in 0...4 )
         {
-            nxtSeg = new SquashySeg(colour);
-            if(i==0) { nxtSeg.leftDisplay.text="E"; nxtSeg.rightDisplay.text="I"; }
-            if(i==1) { nxtSeg.leftDisplay.text="W"; nxtSeg.rightDisplay.text="O"; }
-            if(i==2) { nxtSeg.leftDisplay.text="Q"; nxtSeg.rightDisplay.text="P"; }
-            nxtSeg.y = -40;
-            colour*=0x100;
+            nxtSeg = new SquashySeg(i==3?true:false);
+            
+            if(i==1) { nxtSeg.leftDisplay.text="E"; nxtSeg.rightDisplay.text="I"; }
+            if(i==2) { nxtSeg.leftDisplay.text="W"; nxtSeg.rightDisplay.text="O"; }
+            if(i==3) { nxtSeg.leftDisplay.text="Q"; nxtSeg.rightDisplay.text="P"; }
+            
+            nxtSeg.y = -50;
+            
             if( curSeg != null )
             {
                 curSeg.addChild(nxtSeg);
@@ -65,9 +68,9 @@ class Squashy extends Sprite
 
     public function randomShape()
     {
-        j0 = randomJoint(seg);
         j1 = randomJoint(seg.child);
         j2 = randomJoint(seg.child.child);
+        j3 = randomJoint(seg.child.child.child);
     }
 
     private function randomJoint( joint )
@@ -93,21 +96,21 @@ class Squashy extends Sprite
         var q = keys.get(Keyboard.Q);
         var w = keys.get(Keyboard.W);
         var e = keys.get(Keyboard.E);
+        
         var i = keys.get(Keyboard.P);
         var o = keys.get(Keyboard.O);
         var p = keys.get(Keyboard.I);
 
+        if(q){ seg.child.child.child.left(); j3=-1; }
+        else if (i){ seg.child.child.child.right(); j3=1; }
+        else {seg.child.child.child.straight(); j3 = 0; }
 
-        if(q){ seg.child.child.left(); j2=-1; }
-        else if (i){ seg.child.child.right(); j2=1; }
+        if(w){ seg.child.child.left(); j2=-1; }
+        else if (o){ seg.child.child.right(); j2=1; }
         else {seg.child.child.straight(); j2 = 0; }
 
-        if(w){ seg.child.left(); j1=-1; }
-        else if (o){ seg.child.right(); j1=1; }
+        if(e){ seg.child.left(); j1=-1; }
+        else if (p){ seg.child.right(); j1=1; }
         else{ seg.child.straight(); j1=0; }
-
-        if(e){ seg.left(); j0=-1; }
-        else if (p){ seg.right(); j0=1;}
-        else{ seg.straight(); j0=0;}
     }
 }
