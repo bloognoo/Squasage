@@ -54,7 +54,7 @@ class Main extends Sprite {
 		textField.x = 50;
 		textField.y = 40;
 		textField.width = 200;
-		textField.text = "Squasage";
+		textField.text = "Squashage";
 
 		countdown = new TextField();
 		countdown.defaultTextFormat = format;
