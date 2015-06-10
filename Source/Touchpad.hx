@@ -6,6 +6,8 @@ import openfl.events.TouchEvent;
 import openfl.ui.Multitouch;
 import openfl.ui.MultitouchInputMode;
 
+import openfl.Lib;
+
 class Touchpad extends EventDispatcher
 {
 	public function new()
@@ -22,8 +24,28 @@ class Touchpad extends EventDispatcher
 		}
 	}
 
+	public function addTouchZone( touchZone:TouchZone )
+	{
+		if(touchZone != null)
+		{
+			touchZones.add(touchZone);
+		}	
+	}
 
+	private function onTouchBegin( event:TouchEvent )
+	{
 
+	}
+
+	private function onTouchMove( event:TouchEvent )
+	{
+
+	}
+
+	private function onTouchEnd( event:TouchEvent )
+	{
+
+	}
 
 		//dispatchEvent(new TouchInputEvent(id));
 }
