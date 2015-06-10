@@ -23,9 +23,13 @@ class Main extends Sprite {
 	private var livesDisplay:TextField;
 	private var scoreDisplay:TextField;
 
+	private var touchpad:Touchpad;
+
 	public function new () {
 
 		super ();
+
+		touchpad = new Touchpad();
 
 		var topFormat = new TextFormat ("Katamotz Ikasi", 45, 0x7A0026);
 		livesDisplay = new TextField();

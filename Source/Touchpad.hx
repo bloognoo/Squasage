@@ -1,17 +1,29 @@
-/*package;
+package;
 
 import openfl.events.EventDispatcher;
 
+import openfl.events.TouchEvent;
+import openfl.ui.Multitouch;
+import openfl.ui.MultitouchInputMode;
 
-class TouchPad extends EventDispatcher
+class Touchpad extends EventDispatcher
 {
 	public function new()
 	{
 		super();
+		var touchEnabled = Multitouch.supportsTouchEvents;
+		if(touchEnabled)
+		{
+			Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
+	
+			Lib.current.stage.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchBegin);
+			Lib.current.stage.addEventListener(TouchEvent.TOUCH_MOVE, onTouchMove);
+			Lib.current.stage.addEventListener(TouchEvent.TOUCH_END, onTouchEnd);
+		}
 	}
 
-	public function broadcast( id:String ):Void
-	{
-		dispatchEvent(new TouchEvent(id));
-	}
-}*/
+
+
+
+		//dispatchEvent(new TouchInputEvent(id));
+}

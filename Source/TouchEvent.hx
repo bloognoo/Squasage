@@ -1,8 +1,8 @@
-/*package;
+package;
 
 import Event;
 
-class TouchEvent extends Event
+class TouchInputEvent extends Event
 {
 	public var id:String = "";
 
@@ -12,4 +12,4 @@ class TouchEvent extends Event
 	
 		this.id = id;
 	}
-}*/
+}
