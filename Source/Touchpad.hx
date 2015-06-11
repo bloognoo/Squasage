@@ -10,6 +10,8 @@ import openfl.Lib;
 
 class Touchpad extends EventDispatcher
 {
+	private var touchZones:List<TouchZone>;
+
 	public function new()
 	{
 		super();
@@ -17,11 +19,13 @@ class Touchpad extends EventDispatcher
 		if(touchEnabled)
 		{
 			Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
-	
+
 			Lib.current.stage.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchBegin);
 			Lib.current.stage.addEventListener(TouchEvent.TOUCH_MOVE, onTouchMove);
 			Lib.current.stage.addEventListener(TouchEvent.TOUCH_END, onTouchEnd);
 		}
+
+		touchZones = new List<TouchZone>();
 	}
 
 	public function addTouchZone( touchZone:TouchZone )
@@ -29,7 +33,7 @@ class Touchpad extends EventDispatcher
 		if(touchZone != null)
 		{
 			touchZones.add(touchZone);
-		}	
+		}
 	}
 
 	private function onTouchBegin( event:TouchEvent )

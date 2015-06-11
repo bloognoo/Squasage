@@ -4,12 +4,12 @@ import Event;
 
 class TouchInputEvent extends Event
 {
-	public var id:String = "";
+	public var touchZone:TouchZone;
 
-	public function new( id:String )
+	public function new( touchZone:TouchZone )
 	{
 		super();
-	
-		this.id = id;
+
+		this.touchZone = touchZone;
 	}
 }
