@@ -38,7 +38,7 @@ class Touchpad extends EventDispatcher
 
 	private function onTouchBegin( event:TouchEvent )
 	{
-
+		event
 	}
 
 	private function onTouchMove( event:TouchEvent )
