@@ -7,6 +7,7 @@ enum TouchState
 	Move;
 }
 
+
 class TouchZone
 {
 	public var x:Float;
