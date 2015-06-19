@@ -1,17 +1,11 @@
 package;
 
-enum TouchState
-{
-	Begin;
-	End;
-	Move;
-}
-
-
 class TouchZone
 {
 	public var x:Float;
 	public var y:Float;
-	public var value:String;
-	public var state:Enum<TouchState>;
+	public var width:Float;
+	public var height:Float;
+	public var key:String;
+	public var touchState:Int;
 }

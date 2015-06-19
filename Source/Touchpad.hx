@@ -1,7 +1,7 @@
 package;
 
+import openfl.display.Sprite;
 import openfl.events.EventDispatcher;
-
 import openfl.events.TouchEvent;
 import openfl.ui.Multitouch;
 import openfl.ui.MultitouchInputMode;
@@ -36,9 +36,40 @@ class Touchpad extends EventDispatcher
 		}
 	}
 
+	private function collided( x:Float, y:Float, target:TouchZone ):Bool
+	{
+		if( x > target.x && x < target.x + target.width )
+		{
+			if( y > target.y && y < target.y + target.height )
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private function testZones( event:TouchEvent, state:Int )
+	{
+		var x = event.stageX;
+		var y = event.stageY;
+
+		for( zone in touchZones )
+		{
+			if( collided( event.stageX, event.stageY, zone) )
+			{
+				zone.touchState = TouchState.Begin;
+				dispatchEvent( new TouchInputEvent( zone ) );
+			}
+			else
+			{
+				zone.touchState = TouchState.None;
+			}
+		}
+	}
+
 	private function onTouchBegin( event:TouchEvent )
 	{
-		//event
+		testZones( event, TouchState.Begin );
 	}
 
 	private function onTouchMove( event:TouchEvent )

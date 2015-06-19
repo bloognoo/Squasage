@@ -1,14 +1,14 @@
 package;
 
-import Event;
+import openfl.events.Event;
 
 class TouchInputEvent extends Event
 {
 	public var touchZone:TouchZone;
 
-	public function new( touchZone:TouchZone )
+	public function new( touchZone:TouchZone, ?type, ?bubbles, ?cancelable )
 	{
-		super();
+		super(type, bubbles, cancelable);
 
 		this.touchZone = touchZone;
 	}
