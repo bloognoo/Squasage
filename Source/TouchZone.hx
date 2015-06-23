@@ -1,11 +1,10 @@
 package;
 
-class TouchZone
+import openfl.display.Sprite;
+
+class TouchZone extends Sprite
 {
-	public var x:Float;
-	public var y:Float;
-	public var width:Float;
-	public var height:Float;
+	public function new(){super();}
 	public var key:String;
-	public var touchState:Int;
+	public var touchState:TouchStateValue;
 }

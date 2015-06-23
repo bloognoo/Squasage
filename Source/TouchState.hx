@@ -1,9 +1,11 @@
 package;
 
+typedef TouchStateValue = Int;
+
 class TouchState
 {
-	public static var None = 0;
-	public static var Begin = 1;
-	public static var End = 2;
-	public static var Move = 3;
+	public static var None:TouchStateValue = 0;
+	public static var Begin:TouchStateValue = 1;
+	public static var End:TouchStateValue = 2;
+	public static var Move:TouchStateValue = 3;
 }
