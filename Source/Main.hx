@@ -44,7 +44,7 @@ class Main extends Sprite {
 		scoreDisplay = new TextField();
 		scoreDisplay.defaultTextFormat = topFormat;
 		scoreDisplay.embedFonts = true;
-		scoreDisplay.width = 200;
+		scoreDisplay.width = 400;
 		scoreDisplay.x = 60;
 		scoreDisplay.y = -10;
 		addChild(scoreDisplay);
@@ -57,7 +57,8 @@ class Main extends Sprite {
 		textField.selectable = false;
 		textField.x = 50;
 		textField.y = 40;
-		textField.width = 200;
+		textField.width = 400;
+		textField.height = 150;
 		textField.text = "Squashage";
 
 		countdown = new TextField();
