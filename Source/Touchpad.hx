@@ -8,8 +8,6 @@ import openfl.ui.MultitouchInputMode;
 
 import openfl.Lib;
 
-import TouchStateValue;
-
 class Touchpad extends EventDispatcher
 {
 	private var touchZones:List<TouchZone>;
@@ -50,7 +48,7 @@ class Touchpad extends EventDispatcher
 		return false;
 	}
 
-	private function testZones( event:TouchEvent, state:TouchStateValue )
+	private function testZones( event:TouchEvent, state:Int )
 	{
 		var x = event.stageX;
 		var y = event.stageY;
