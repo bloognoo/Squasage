@@ -39,10 +39,11 @@ class Main extends Sprite {
 		successDisplay.defaultTextFormat = topFormat;
 		successDisplay.embedFonts = true;
 		successDisplay.selectable = false;
-		successDisplay.width = 200;
-		successDisplay.x = 400;
-		successDisplay.y = 400;
-		successDisplay.text = "GO!";
+		successDisplay.width = 300;
+		successDisplay.height = 300;
+		successDisplay.x = 50;
+		successDisplay.y = 150;
+		successDisplay.text = "50";//"abcdefghijklm\nnopqrstuvwxyz\nABCDEFGHIJKLM\nNOPQRSTUVWXYZ\n1234567890";
 		addChild(successDisplay);
 		launch("GO!");
 
@@ -118,8 +119,9 @@ class Main extends Sprite {
 
 	private function launch( msg:String )
 	{
-		Actuate.tween(successDisplay, 1.0, {y: 100, alpha:0}, false).ease (Linear.easeNone)
-			.onComplete(function(){successDisplay.y=400;successDisplay.alpha=255;});
+		successDisplay.text = msg;
+		Actuate.tween(successDisplay, 1.0, {y: 100}, false).ease (Linear.easeNone)
+			.onComplete(function(){successDisplay.y=400;trace("BLAH!");});
 	}
 
 	private function updateScore()
@@ -188,10 +190,10 @@ class Main extends Sprite {
 			sq1.j2 == sq2.j2 &&
 			sq1.j3 == sq2.j3)
 			{
-				launch("Wow!");
+				launch("wow!");
 				return 6;
 			}
-		launch("Oh No!");
+		launch("oh no!");
 		return 0;
 	}
 }
