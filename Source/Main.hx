@@ -8,6 +8,7 @@ import openfl.text.TextField;
 import openfl.text.TextFormat;
 
 import motion.Actuate;
+import motion.easing.Linear;
 
 class Main extends Sprite {
 
@@ -22,6 +23,7 @@ class Main extends Sprite {
 
 	private var livesDisplay:TextField;
 	private var scoreDisplay:TextField;
+	private var successDisplay:TextField;
 
 	private var touchpad:Touchpad;
 
@@ -32,6 +34,18 @@ class Main extends Sprite {
 		touchpad = new Touchpad();
 
 		var topFormat = new TextFormat ("Katamotz Ikasi", 45, 0x7A0026);
+
+		successDisplay = new TextField();
+		successDisplay.defaultTextFormat = topFormat;
+		successDisplay.embedFonts = true;
+		successDisplay.selectable = false;
+		successDisplay.width = 200;
+		successDisplay.x = 400;
+		successDisplay.y = 400;
+		successDisplay.text = "GO!";
+		addChild(successDisplay);
+		launch("GO!");
+
 		livesDisplay = new TextField();
 		livesDisplay.defaultTextFormat = topFormat;
 		livesDisplay.embedFonts = true;
@@ -41,6 +55,7 @@ class Main extends Sprite {
 		livesDisplay.y = -10;
 		addChild(livesDisplay);
 		updateLives();
+
 		scoreDisplay = new TextField();
 		scoreDisplay.defaultTextFormat = topFormat;
 		scoreDisplay.embedFonts = true;
@@ -101,6 +116,12 @@ class Main extends Sprite {
 		trigger();
 	}
 
+	private function launch( msg:String )
+	{
+		Actuate.tween(successDisplay, 1.0, {y: 100, alpha:0}, false).ease (Linear.easeNone)
+			.onComplete(function(){successDisplay.y=400;successDisplay.alpha=255;});
+	}
+
 	private function updateScore()
 	{
 		var digits = ""+playerScore;
@@ -110,7 +131,7 @@ class Main extends Sprite {
 		{
 			out += "0";
 		}
-		scoreDisplay.text = out+playerScore;
+		scoreDisplay.text = /*out+*/""+playerScore;
 	}
 
 	private function updateLives()
@@ -165,7 +186,12 @@ class Main extends Sprite {
 	{
 		if( sq1.j1 == sq2.j1 &&
 			sq1.j2 == sq2.j2 &&
-			sq1.j3 == sq2.j3) return 6;
+			sq1.j3 == sq2.j3)
+			{
+				launch("Wow!");
+				return 6;
+			}
+		launch("Oh No!");
 		return 0;
 	}
 }
