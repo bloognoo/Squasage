@@ -15,8 +15,8 @@ class Main extends Sprite {
 	private var countdown:TextField;
 	private var timerMax = 5;
 	private var timerCount = 6;
-	private var dancer:Squashy = new Squashy();
-	private var squashy:Squashy = new Squashy(true);
+	private var dancer:y = new y();
+	private var y:y = new y(true);
 	private var livesMax = 5;
 	private var lives = 5;
 	private var playerScore = 0;
@@ -75,7 +75,7 @@ class Main extends Sprite {
 		textField.y = 40;
 		textField.width = 400;
 		textField.height = 150;
-		textField.text = "Squashage";
+		textField.text = "Squasage";
 
 		countdown = new TextField();
 		countdown.defaultTextFormat = format;
@@ -104,9 +104,9 @@ class Main extends Sprite {
 		graphics.lineTo(340,360);
 		graphics.endFill();
 
-		squashy.x = 200;
-		squashy.y = 410;
-		addChild(squashy);
+		y.x = 200;
+		y.y = 410;
+		addChild(y);
 
 		dancer.x = 600;
 		dancer.y = 410;
@@ -161,7 +161,7 @@ class Main extends Sprite {
 		countdown.text = ""+timerCount;
 		if(timerCount == 0)
 		{
-			var tempScore = score(squashy,dancer);
+			var tempScore = score(y,dancer);
 			if(tempScore == 0)
 			{
 				lives --;
@@ -184,7 +184,7 @@ class Main extends Sprite {
 		Actuate.timer (1).onComplete(trigger);
 	}
 
-	private function score(sq1:Squashy, sq2:Squashy)
+	private function score(sq1:y, sq2:y)
 	{
 		if( sq1.j1 == sq2.j1 &&
 			sq1.j2 == sq2.j2 &&
