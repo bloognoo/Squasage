@@ -1,5 +1,7 @@
 package;
 
+//using layout.LayoutPreserver;
+
 import haxe.Timer;
 
 import openfl.display.Sprite;
@@ -10,10 +12,16 @@ import openfl.text.TextFormat;
 import motion.Actuate;
 import motion.easing.Linear;
 
+import openfl.Lib;
+
+import lime.ui.Joystick;
+import lime.ui.Gamepad;
+
 class Main extends Sprite {
 
+
 	private var countdown:TextField;
-	private var timerMax = 5;
+	private var timerMax = 10;
 	private var timerCount = 6;
 	private var dancer:Squashy = new Squashy();
 	private var squashy:Squashy = new Squashy(true);
@@ -29,6 +37,19 @@ class Main extends Sprite {
 
 		super ();
 
+		trace("{");
+		for(stick in Gamepad.devices)
+		{
+			trace(stick.name);
+		}
+		//var joystick = new Joystick()
+		trace("}");
+
+		Lib.current.stage.scaleMode = SHOW_ALL;
+		
+		trace(Lib.current.stage.width);
+		trace(Lib.current.stage.height);
+
 		var topFormat = new TextFormat ("Katamotz Ikasi", 45, 0x7A0026);
 
 		successDisplay = new TextField();
@@ -39,7 +60,9 @@ class Main extends Sprite {
 		successDisplay.height = 300;
 		successDisplay.x = 50;
 		successDisplay.y = 150;
-		successDisplay.text = "50";//"abcdefghijklm\nnopqrstuvwxyz\nABCDEFGHIJKLM\nNOPQRSTUVWXYZ\n1234567890";
+		successDisplay.text = "50";
+//		successDisplay.stickToTopAndBottom();
+//		successDisplay.stickToLeftAndRight();
 		addChild(successDisplay);
 		launch("GO!");
 
@@ -50,6 +73,8 @@ class Main extends Sprite {
 		livesDisplay.width = 200;
 		livesDisplay.x = 400;
 		livesDisplay.y = -10;
+//		livesDisplay.stickToTopAndBottom();
+//		livesDisplay.stickToLeftAndRight();
 		addChild(livesDisplay);
 		updateLives();
 
@@ -59,6 +84,8 @@ class Main extends Sprite {
 		scoreDisplay.width = 400;
 		scoreDisplay.x = 60;
 		scoreDisplay.y = -10;
+//		scoreDisplay.stickToTopAndBottom();
+//		scoreDisplay.stickToLeftAndRight();
 		addChild(scoreDisplay);
 		updateScore();
 
@@ -72,6 +99,8 @@ class Main extends Sprite {
 		textField.width = 400;
 		textField.height = 150;
 		textField.text = "Squasage";
+//		textField.stickToTopAndBottom();
+//		textField.stickToLeftAndRight();
 
 		countdown = new TextField();
 		countdown.defaultTextFormat = format;
@@ -81,6 +110,8 @@ class Main extends Sprite {
 		countdown.y = 20;
 		countdown.width = 100;
 		countdown.text = "0";
+//		countdown.stickToTopAndBottom();
+//		countdown.stickToLeftAndRight();
 
 		addChild (textField);
 		addChild (countdown);
@@ -102,10 +133,14 @@ class Main extends Sprite {
 
 		squashy.x = 200;
 		squashy.y = 410;
+//		squashy.stickToTopAndBottom();
+//		squashy.stickToLeftAndRight();
 		addChild(squashy);
 
 		dancer.x = 600;
 		dancer.y = 410;
+//		dancer.stickToTopAndBottom();
+//		dancer.stickToLeftAndRight();
 		addChild(dancer);
 
 		lives = livesMax;

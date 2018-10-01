@@ -8,10 +8,16 @@
 
 	<haxelib name="openfl" />
 	<haxelib name="actuate" />
+	<!--<haxelib name="advanced-layout" />-->
+	 <section if="steam">
+   	<!-- Steam specifics go here -->
+	   <setenv name="STEAM_APP_ID" value="XXXXXX" />
+
+   </section>
 
 	<assets path="Assets" rename="assets" exclude="*.svg" />
 	<icon path="Assets/openfl.svg" />
 
-	<window hardware="false"/>
+	<window hardware="true" orientation="landscape" resizable="false"/>
 
 </project>
